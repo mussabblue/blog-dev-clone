@@ -1,0 +1,23 @@
+@media screen and (max-width: 1120px) {
+  .blog section:nth-child(3) {
+    right: 2em;
+  }
+}
+@media screen and (max-width: 1111px) {
+  .blog section:nth-child(3) {
+    right: 1em;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .right_side {
+    display: none;
+  }
+  .blog section:nth-child(1) {
+    width: 9%;
+  }
+
+  .blog section:nth-child(2) {
+    width: 100%;
+    margin-left: 9%;
+  }
+}
