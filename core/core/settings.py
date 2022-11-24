@@ -2,6 +2,8 @@
 
 from pathlib import Path
 import os 
+import cloudinary_storage
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +34,8 @@ INSTALLED_APPS = [
     'knox',
     'django_rest_passwordreset',
     'colorfield',
+    'cloudinary_storage',
+    'cloudinary',
 
     #my apps
     'accounts',
@@ -39,6 +43,12 @@ INSTALLED_APPS = [
     'backend',
     'blog',
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dzx9g99b8',
+    'API_KEY': '543738579938691',
+    'API_SECRET': '2ande-7z3JNQ9jSO9MpVHbL9iiY'
+}
 
 
 REST_FRAMEWORK = {
@@ -128,6 +138,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
@@ -159,3 +170,5 @@ EMAIL_PORT = 587
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
 )
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
