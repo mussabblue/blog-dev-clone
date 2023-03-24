@@ -81,7 +81,7 @@ class Tag(models.Model):
 
 class Profile(models.Model):
     user                = models.OneToOneField(Account, on_delete=models.CASCADE, null=True)
-    profile_image       = models.ImageField(default='default.jpg') #, upload_to = "profile_images")
+    profile_image       = models.ImageField(default='default.jpg', upload_to = "profile_images")
     followers           = models.ManyToManyField(Account, related_name='followers')
     following_tags      = models.ManyToManyField(Tag, related_name='tags')
     
@@ -92,16 +92,17 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return self.user.first_name + ' Profile'
     
-    # def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
        
+        super().save()
+        
+        img = Image.open(self.profile_image.path)
+        if img.height > 400 or img.width > 400:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.profile_image.path)
 
-    #     img = Image.open(self.profile_image.path)
-    #     if img.height > 400 or img.width > 400:
-    #         output_size = (300, 300)
-    #         img.thumbnail(output_size)
-    #         img.save(self.profile_image.path)
-
-    #     super().save()
+        
 
 
 def post_save_profile_create(sender, instance, created, *args, **kwargs):

@@ -51,25 +51,18 @@ const Signup = () => {
             <section className='auth'>
                 <div>
                     <h1 className='auth-title'>Sign up</h1>
-                    {/* <form onSubmit={handleSubmit}> */}
-                    {/* <input className='form-input' type='text' ref={email} placeholder='Email' />
-                    <input className='form-input' type='text' ref={first_name} placeholder='First name' />
-                    <input className='form-input' type='text' ref={last_name} placeholder='Last name' />
-                    <input className='form-input' type='text' ref={password} placeholder='Password' />
-
-                    <button>register</button> */}
                     <form onSubmit={handleSubmit} error={error}>
                         <div className='form-container' error={getError("email")}>
                             <input className='form-input' onFocus={() => clearErrors()} type='email' ref={email} placeholder='Email' />
                         </div>
                         <div className='form-container' error={getError("first_name")}>
-                            <input className='form-input' onFocus={() => clearErrors()} type='email' ref={first_name} placeholder='First name' />
+                            <input className='form-input' onFocus={() => clearErrors()} type='text' ref={first_name} placeholder='First name' />
                         </div>
                         <div className='form-container' error={getError("last_name")}>
-                            <input className='form-input' onFocus={() => clearErrors()} type='email' ref={last_name} placeholder='Last name' />
+                            <input className='form-input' onFocus={() => clearErrors()} type='text' ref={last_name} placeholder='Last name' />
                         </div>
                         <div className='form-container' error={getError("password")}>
-                            <input className='form-input' onFocus={() => clearErrors()} type='text' ref={password} placeholder='Password' />
+                            <input className='form-input' onFocus={() => clearErrors()} type='password' ref={password} placeholder='Password' />
                         </div>
                         <button>
                             <ul>

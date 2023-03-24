@@ -98,7 +98,7 @@ const Post = () => {
         formData.append('title', titleRef.current.value)
         formData.append('content', postRef.current.value)
         formData.append('cover_image', cover)
-        formData.append('tags', selectedTags)
+        // formData.append('tags', selectedTags)
         dispatch(publish_post(formData))
     }
 

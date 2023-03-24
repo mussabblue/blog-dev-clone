@@ -17,8 +17,6 @@ class SharedModel(models.Model):
         abstract = True
         ordering = ('-date_created', )
 
-        
-
     def pub_date(self):
         return self.date_created.strftime("%d %b %Y")
 
@@ -26,7 +24,7 @@ class SharedModel(models.Model):
 # Blog
 class Blog(SharedModel):  
     title                   = models.CharField(max_length=220)
-    cover_image             = models.ImageField(default='cover.jpg') #, upload_to='cover_images')
+    cover_image             = models.ImageField(default='cover.jpg', upload_to='cover_images')
     blog_tags               = models.ManyToManyField(Tag, related_name='blog_tags')
 
 
@@ -34,14 +32,14 @@ class Blog(SharedModel):
         return f'{self.title} Blog'
         
 
-    # def save(self, *args, **kwargs):
-    #     super().save()
+    def save(self, *args, **kwargs):
+        super().save()
 
-    #     img = Image.open(self.cover_image.path)
-    #     if img.height > 600 or img.width > 600:
-    #         output_size = (1200, 600)
-    #         img.thumbnail(output_size)
-    #         img.save(self.cover_image.path)
+        img = Image.open(self.cover_image.path)
+        if img.height > 600 or img.width > 600:
+            output_size = (1200, 600)
+            img.thumbnail(output_size)
+            img.save(self.cover_image.path)
 
 
 # Comment
